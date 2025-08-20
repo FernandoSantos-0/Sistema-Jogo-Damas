@@ -7,12 +7,14 @@ public class Piece {
 
     private Color cor;
     private Position posicao;
+    private char simbolo;
 
     public Piece(){}
 
-    public Piece(Color cor, Position posicao) {
+    public Piece(Color cor, Position posicao,char simbolo) {
         this.cor = cor;
         this.posicao = posicao;
+        this.simbolo = simbolo;
     }
 
     public Color getCor() {
@@ -33,6 +35,6 @@ public class Piece {
 
     @Override
     public String toString() {
-        return "P";
+        return ""+simbolo;
     }
 }

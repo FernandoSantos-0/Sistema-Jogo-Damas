@@ -1,6 +1,7 @@
 package application;
 
 import boardgame.Position;
+import boardgame.Tabuleiro;
 import enums.Color;
 import pieces.Piece;
 
@@ -14,31 +15,55 @@ public class Main {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        Piece[][] matriz = new Piece[8][8];
+        Tabuleiro tabuleiro = new Tabuleiro();
 
         for (int i = 0 ; i < 2 ; i++){
             for (int c = 0 ; c < 8 ; c++){
-                matriz[i][c] = new Piece(Color.BRANCO,new Position(i,c));
+                tabuleiro.incluirPeca(new Piece(Color.BRANCO,new Position(i,c),'B'));
             }
         }
 
         for (int i = 6 ; i < 8 ; i++){
             for (int c = 0 ; c < 8 ; c++){
-                matriz[i][c] = new Piece(Color.PRETO,new Position(i,c));
+                tabuleiro.incluirPeca(new Piece(Color.PRETO,new Position(i,c),'P'));
             }
         }
 
-        for (int i = 0 ; i < 8 ; i++){
-            for (int c = 0 ; c < 8 ; c++){
-                if(matriz[i][c] == null){
-                    System.out.print(" - ");
-                }
-                else {
-                    System.out.print(" " + matriz[i][c].toString()+" ");
-                }
-            }
-            System.out.println();
-        }
+        System.out.println();
+        System.out.println(tabuleiro);
+
+        int number = 1;
+
+        do{
+
+            System.out.println("Insira a linha e coluna para mexer(0 a 7): ");
+            int linha = sc.nextInt();
+            sc.nextLine();
+            int coluna = sc.nextInt();
+            sc.nextLine();
+
+            System.out.println("Agora escolha para onde mover(0 a 7): ");
+            int linhaMover = sc.nextInt();
+            sc.nextLine();
+            int colunaMover = sc.nextInt();
+            sc.nextLine();
+
+            Piece[][] matriz = tabuleiro.getMatriz();
+
+            Piece p = matriz[linha][coluna];
+
+            matriz[linha][coluna] = null;
+
+            p.setPosicao(new Position(linhaMover,colunaMover));
+
+            matriz[linhaMover][colunaMover] = p;
+
+            System.out.println(tabuleiro);
+
+            System.out.println("Quer continuar insira qualquer numero, sair = 0 : ");
+            number = sc.nextInt();
+
+        }while(number != 0);
 
 
         sc.close();
