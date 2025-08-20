@@ -42,7 +42,7 @@ public class Tabuleiro {
 
         for (int i = 0; i < matriz.length; i++) {
 
-            result.append(i).append("  ");
+            result.append(i).append(" ");
 
             for (int j = 0; j < matriz[i].length; j++) {
 
@@ -58,7 +58,7 @@ public class Tabuleiro {
 
             result.append("\n");
         }
-        result.append("    a1 b1 c1 d1 e1 f1 g1 h1");
+        result.append("   0  1  2  3  4  5  6  7");
 
         return result.toString();
 
