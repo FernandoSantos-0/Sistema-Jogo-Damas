@@ -48,13 +48,13 @@ public class Main {
             int colunaMover = sc.nextInt();
             sc.nextLine();
 
-            Piece[][] matriz = tabuleiro.getMatriz();
+            Piece[][] matriz = tabuleiro.getMatriz(); // Copiando matriz
 
-            Piece p = matriz[linha][coluna];
+            Piece p = matriz[linha][coluna]; // separando a peca escolhida da matriz
 
-            matriz[linha][coluna] = null;
+            matriz[linha][coluna] = null; // colocando o valor null no local escolhido para movimento
 
-            p.setPosicao(new Position(linhaMover,colunaMover));
+            p.comportamentoMovimento(new Position(linhaMover,colunaMover)); // ver se o movimento e posivel se sim move, se nao fica no msm local
 
             matriz[linhaMover][colunaMover] = p;
 
