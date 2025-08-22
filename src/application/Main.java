@@ -17,11 +17,11 @@ public class Main {
 
         Tabuleiro tabuleiro = new Tabuleiro();
 
-        for (int i = 0 ; i < 2 ; i++){
-            for (int c = 0 ; c < 8 ; c++){
-                tabuleiro.incluirPeca(new Piece(Color.BRANCO,new Position(i,c),'B'));
-            }
-        }
+       // for (int i = 0 ; i < 2 ; i++){
+       //     for (int c = 0 ; c < 8 ; c++){
+                //tabuleiro.incluirPeca(new Piece(Color.BRANCO,new Position(i,c),'B'));
+         //   }
+        //}
 
         for (int i = 6 ; i < 8 ; i++){
             for (int c = 0 ; c < 8 ; c++){
@@ -48,23 +48,22 @@ public class Main {
             int colunaMover = sc.nextInt();
             sc.nextLine();
 
-            Piece[][] matriz = tabuleiro.getMatriz(); // Copiando matriz
+            Piece p = tabuleiro.getMatriz()[linha][coluna]; // separando a peca escolhida da matriz
 
-            Piece p = matriz[linha][coluna]; // separando a peca escolhida da matriz
-
-            matriz[linha][coluna] = null; // colocando o valor null no local escolhido para movimento
+            tabuleiro.getMatriz()[linha][coluna] = null; // colocando o valor null no local escolhido para movimento
 
             p.comportamentoMovimento(new Position(linhaMover,colunaMover)); // ver se o movimento e posivel se sim move, se nao fica no msm local
 
-            matriz[linhaMover][colunaMover] = p;
+            p.updatedama(); // ver se a peça virou dama
 
-            System.out.println(tabuleiro);
+            tabuleiro.incluirPeca(p); // incluido peça na matriz do tabuleiro para imprimir
+
+            System.out.println(tabuleiro); // imprimi o tabuleiro
 
             System.out.println("Quer continuar insira qualquer numero, sair = 0 : ");
             number = sc.nextInt();
 
         }while(number != 0);
-
 
         sc.close();
     }
