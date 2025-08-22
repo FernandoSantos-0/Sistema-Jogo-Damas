@@ -17,11 +17,11 @@ public class Main {
 
         Tabuleiro tabuleiro = new Tabuleiro();
 
-       // for (int i = 0 ; i < 2 ; i++){
-       //     for (int c = 0 ; c < 8 ; c++){
-                //tabuleiro.incluirPeca(new Piece(Color.BRANCO,new Position(i,c),'B'));
-         //   }
-        //}
+        for (int i = 0 ; i < 2 ; i++){
+            for (int c = 0 ; c < 8 ; c++){
+                tabuleiro.incluirPeca(new Piece(Color.BRANCO,new Position(i,c),'B'));
+            }
+        }
 
         for (int i = 6 ; i < 8 ; i++){
             for (int c = 0 ; c < 8 ; c++){
