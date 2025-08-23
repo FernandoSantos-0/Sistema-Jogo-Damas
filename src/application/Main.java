@@ -32,21 +32,17 @@ public class Main {
         System.out.println();
         System.out.println(tabuleiro);
 
-        int number = 1;
+        int cor;
 
         do{
 
-            System.out.println("Insira a linha e coluna para mexer(0 a 7): ");
+            System.out.println("Linha Coluna: ");
             int linha = sc.nextInt();
-            sc.nextLine();
             int coluna = sc.nextInt();
-            sc.nextLine();
 
-            System.out.println("Agora escolha para onde mover(0 a 7): ");
+            System.out.println("Linha Coluna(Mover): ");
             int linhaMover = sc.nextInt();
-            sc.nextLine();
             int colunaMover = sc.nextInt();
-            sc.nextLine();
 
             Piece p = tabuleiro.getMatriz()[linha][coluna]; // separando a peca escolhida da matriz
 
@@ -60,10 +56,9 @@ public class Main {
 
             System.out.println(tabuleiro); // imprimi o tabuleiro
 
-            System.out.println("Quer continuar insira qualquer numero, sair = 0 : ");
-            number = sc.nextInt();
+            cor = tabuleiro.quantidadePecas(Color.BRANCO); // verifica se o jogo acabou
 
-        }while(number != 0);
+        }while(cor != 0);
 
         sc.close();
     }

@@ -1,5 +1,6 @@
 package boardgame;
 
+import enums.Color;
 import pieces.Piece;
 
 import java.util.List;
@@ -33,6 +34,19 @@ public class Tabuleiro {
 
             matriz[piece.getPosicao().getLinha()][piece.getPosicao().getColuna()] = piece;
         }
+    }
+
+    public int quantidadePecas(Color cor) {
+        int quantidade = 0;
+
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (matriz[i][j] != null && matriz[i][j].getCor() == cor) {
+                    quantidade++;
+                }
+            }
+        }
+        return quantidade;
     }
 
     @Override

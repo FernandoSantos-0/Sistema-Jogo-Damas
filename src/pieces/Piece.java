@@ -43,6 +43,7 @@ public class Piece {
         if (Math.abs(difLinha) == 1 && difColuna == 0 || Math.abs(difColuna) == 1 && difLinha == 0) {
             this.posicao = novaPosicao;
         }
+
     }
 
     public void updatedama(){
