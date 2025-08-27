@@ -6,7 +6,6 @@ public class Piece {
     private int coluna;
     private String cor;
     private char simbolo;
-    private int turno;
 
     public Piece(){}
 
@@ -49,12 +48,8 @@ public class Piece {
         this.simbolo = simbolo;
     }
 
-    public int getTurno() {
-        return turno;
-    }
+    public void dama(){
 
-    public void setTurno(int turno) {
-        this.turno = turno;
     }
 
 }

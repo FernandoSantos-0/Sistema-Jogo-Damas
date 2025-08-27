@@ -5,39 +5,71 @@ import pieces.Piece;
 public class Tabuleiro {
 
     private Piece[][] tabuleiro = new Piece[8][8];
+    private int turno;
 
-    public Tabuleiro(){}
+    public Tabuleiro() {
+    }
 
     public Piece[][] getTabuleiro() {
         return tabuleiro;
     }
 
-    public void moverPecas(int daLinha,int daColuna,int paraLinha,int paraColuna){
+    public void moverPecas(int daLinha, int daColuna, int paraLinha, int paraColuna,int flagTurno) {
 
-        tabuleiro[paraLinha][paraColuna] = tabuleiro[daLinha][daColuna];
-        tabuleiro[daLinha][daColuna] = null;
+        int diffLinha = paraLinha - daLinha;
+        int diffColuna = paraColuna - daColuna;
+
+        if (flagTurno%2 == 0){
+
+            if(tabuleiro[daLinha][daColuna].getCor().equalsIgnoreCase("PRETO")){
+                System.out.println("Movimento inválido!");
+            }
+
+            else{
+                if ((diffLinha == 1 || diffLinha == -1) || (diffColuna == 1 || diffColuna == -1)) {
+                    tabuleiro[paraLinha][paraColuna] = tabuleiro[daLinha][daColuna];
+                    tabuleiro[daLinha][daColuna] = null;
+                } else {
+                    System.out.println("Movimento inválido!");
+                }
+            }
+        }
+        else{
+            if(tabuleiro[daLinha][daColuna].getCor().equalsIgnoreCase("BRANCO")){
+                System.out.println("Movimento inválido!");
+            }
+
+            else{
+                if ((diffLinha == 1 || diffLinha == -1) || (diffColuna == 1 || diffColuna == -1)) {
+                    tabuleiro[paraLinha][paraColuna] = tabuleiro[daLinha][daColuna];
+                    tabuleiro[daLinha][daColuna] = null;
+                } else {
+                    System.out.println("Movimento inválido!");
+                }
+            }
+        }
+
 
     }
 
-    public void incluirPeca(Piece peca){
+    public void incluirPeca(Piece peca) {
         tabuleiro[peca.getLinha()][peca.getColuna()] = peca;
     }
 
-    public void imprimirTabuleiroPespectivaPreta(){
+    public void imprimirTabuleiroPespectivaPreta() {
 
         System.out.println();
 
-        for (int i = 0; i < tabuleiro.length; i++){
+        for (int i = 0; i < tabuleiro.length; i++) {
 
-            System.out.print((i)+ " ");
+            System.out.print((i) + " ");
 
-            for (int c = 0; c < tabuleiro.length; c++){
+            for (int c = 0; c < tabuleiro.length; c++) {
 
-                if (tabuleiro[i][c] == null){
+                if (tabuleiro[i][c] == null) {
                     System.out.print(" - ");
-                }
-                else{
-                    System.out.print(" "+tabuleiro[i][c].getSimbolo()+" ");
+                } else {
+                    System.out.print(" " + tabuleiro[i][c].getSimbolo() + " ");
                 }
 
             }
@@ -46,36 +78,35 @@ public class Tabuleiro {
         System.out.println("   0  1  2  3  4  5  6  7");
     }
 
-    public void imprimirTabuleiroPespectivaBrancas(){
+    public void imprimirTabuleiroPespectivaBrancas() {
 
         System.out.println();
 
-        for (int i = 7; i >= 0; i--){
+        for (int i = 7; i >= 0; i--) {
 
-            System.out.print((i)+ " ");
+            System.out.print((i) + " ");
 
-            for (int c = 7; c >=0; c--){
+            for (int c = 7; c >= 0; c--) {
 
-                if (tabuleiro[i][c] == null){
+                if (tabuleiro[i][c] == null) {
                     System.out.print(" - ");
-                }
-                else{
-                    System.out.print(" "+tabuleiro[i][c].getSimbolo()+" ");
+                } else {
+                    System.out.print(" " + tabuleiro[i][c].getSimbolo() + " ");
                 }
 
             }
             System.out.println();
         }
-        System.out.println("   0  1  2  3  4  5  6  7");
+        System.out.println("   7  6  5  4  3  2  1  0");
     }
 
-    public boolean verSeTemPecaTabuleiro(String cor){
+    public boolean verSeTemPecaTabuleiro(String cor) {
 
         for (int i = 0; i < 8; i++) {
 
             for (int c = 0; c < 8; c++) {
 
-                if (tabuleiro[i][c] != null && tabuleiro[i][c].getCor().equalsIgnoreCase(cor)){
+                if (tabuleiro[i][c] != null && tabuleiro[i][c].getCor().equalsIgnoreCase(cor)) {
                     return true;
                 }
 
@@ -85,6 +116,13 @@ public class Tabuleiro {
 
     }
 
+    public int getTurno() {
+        return turno;
+    }
 
+    public void setTurno(int turno) {
+        this.turno = turno;
+    }
 
+    public void turnoPartida(int daLinha, int daColuna, int flag) {}
 }

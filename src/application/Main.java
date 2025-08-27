@@ -28,9 +28,19 @@ public class Main {
 
         boolean rodando;
 
+        int flagTurno=1;
+
         do {
 
-            tabuleiro.imprimirTabuleiroPespectivaBrancas();
+            flagTurno++;
+
+            if (flagTurno%2 == 0){
+                tabuleiro.imprimirTabuleiroPespectivaBrancas();
+                System.out.println("Turno: Brancas.");
+            }else{
+                tabuleiro.imprimirTabuleiroPespectivaPreta();
+                System.out.println("Turno: Pretas.");
+            }
 
             System.out.print("Da Linha Coluna: ");
             int daLinha = sc.nextInt();
@@ -40,7 +50,7 @@ public class Main {
             int paraLinha = sc.nextInt();
             int paraColuna = sc.nextInt();
 
-            tabuleiro.moverPecas(daLinha,daColuna,paraLinha,paraColuna);
+            tabuleiro.moverPecas(daLinha,daColuna,paraLinha,paraColuna,flagTurno);
 
             rodando = tabuleiro.verSeTemPecaTabuleiro("BRANCO");
             if(!rodando){
