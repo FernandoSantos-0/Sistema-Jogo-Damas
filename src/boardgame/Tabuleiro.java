@@ -22,29 +22,47 @@ public class Tabuleiro {
         if (flagTurno%2 == 0){
 
             if(tabuleiro[daLinha][daColuna].getCor().equalsIgnoreCase("PRETO")){
-                System.out.println("Movimento inválido!");
+                System.out.println("Movimento inválido esse não é o seu turno!");
             }
 
             else{
-                if ((diffLinha == 1 || diffLinha == -1) || (diffColuna == 1 || diffColuna == -1)) {
-                    tabuleiro[paraLinha][paraColuna] = tabuleiro[daLinha][daColuna];
-                    tabuleiro[daLinha][daColuna] = null;
-                } else {
-                    System.out.println("Movimento inválido!");
+
+                if (tabuleiro[daLinha][daColuna] != null && !tabuleiro[daLinha][daColuna].getCor().equals(tabuleiro[paraLinha][paraColuna].getCor())){
+
+                    if ((diffLinha == 1 || diffLinha == -1) || (diffColuna == 1 || diffColuna == -1)) {
+                        tabuleiro[paraLinha][paraColuna] = tabuleiro[daLinha][daColuna];
+                        tabuleiro[daLinha][daColuna] = null;
+                    }
+
+                    else {
+                        System.out.println("Movimento inválido!");
+                    }
+                }
+                else{
+                    System.out.println("Movimento inválido! peça iqual no lugar que vc quer mover!");
                 }
             }
         }
+
         else{
-            if(tabuleiro[daLinha][daColuna].getCor().equalsIgnoreCase("BRANCO")){
+
+            if(tabuleiro[daLinha][daColuna] != null && tabuleiro[daLinha][daColuna].getCor().equalsIgnoreCase("BRANCO")){
                 System.out.println("Movimento inválido!");
             }
 
             else{
-                if ((diffLinha == 1 || diffLinha == -1) || (diffColuna == 1 || diffColuna == -1)) {
-                    tabuleiro[paraLinha][paraColuna] = tabuleiro[daLinha][daColuna];
-                    tabuleiro[daLinha][daColuna] = null;
-                } else {
-                    System.out.println("Movimento inválido!");
+
+                if (tabuleiro[daLinha][daColuna] != null && !tabuleiro[daLinha][daColuna].getCor().equals(tabuleiro[paraLinha][paraColuna].getCor())) {
+
+                    if ((diffLinha == 1 || diffLinha == -1) || (diffColuna == 1 || diffColuna == -1)) {
+                        tabuleiro[paraLinha][paraColuna] = tabuleiro[daLinha][daColuna];
+                        tabuleiro[daLinha][daColuna] = null;
+                    } else {
+                        System.out.println("Movimento inválido!");
+                    }
+                }
+                else{
+                    System.out.println("Movimento inválido! peça iqual no lugar que vc quer mover!");
                 }
             }
         }
