@@ -5,11 +5,11 @@ public class Piece {
     private int linha;
     private int coluna;
     private String cor;
-    private char simbolo;
+    private String simbolo;
 
     public Piece(){}
 
-    public Piece(int linha, int coluna, String cor, char simbolo) {
+    public Piece(int linha, int coluna, String cor, String simbolo) {
         this.linha = linha;
         this.coluna = coluna;
         this.cor = cor;
@@ -40,15 +40,22 @@ public class Piece {
         this.cor = cor;
     }
 
-    public char getSimbolo() {
+    public String getSimbolo() {
         return simbolo;
     }
 
-    public void setSimbolo(char simbolo) {
+    public void setSimbolo(String simbolo) {
         this.simbolo = simbolo;
     }
 
-    public void dama(){
+    public void eDama(int paralinha){
+
+        if (cor.equalsIgnoreCase("PRETO") && paralinha == 0){
+            simbolo = simbolo+"'";
+        }
+        else if (cor.equalsIgnoreCase("BRANCO") && paralinha == 7){
+            simbolo = simbolo+"'";
+        }
 
     }
 

@@ -17,14 +17,16 @@ public class Main {
 
         for (int c = 0; c < 2;c++) {
             for (int i = 0; i < 8; i++) {
-                tabuleiro.incluirPeca(new Piece(c,i,"BRANCO",'B'));
+                tabuleiro.incluirPeca(new Piece(c,i,"BRANCO","B"));
             }
         }
         for (int c = 6; c < 8;c++) {
             for (int i = 0; i < 8; i++) {
-                tabuleiro.incluirPeca(new Piece(c,i,"PRETO",'P'));
+                tabuleiro.incluirPeca(new Piece(c,i,"PRETO","P"));
             }
         }
+
+        tabuleiro.incluirPeca(new Piece(6,7,"BRANCO","B"));
 
         boolean rodando;
 
@@ -59,6 +61,7 @@ public class Main {
             else {
                 rodando = tabuleiro.verSeTemPecaTabuleiro("PRETO");
             }
+
 
 
         } while (rodando);

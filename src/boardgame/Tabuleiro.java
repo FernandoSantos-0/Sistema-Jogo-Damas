@@ -27,11 +27,12 @@ public class Tabuleiro {
 
             else{
 
-                if (tabuleiro[daLinha][daColuna] != null && !tabuleiro[daLinha][daColuna].getCor().equals(tabuleiro[paraLinha][paraColuna].getCor())){
+                if (tabuleiro[daLinha][daColuna] != null && tabuleiro[paraLinha][paraColuna] != null && !tabuleiro[daLinha][daColuna].getCor().equals(tabuleiro[paraLinha][paraColuna].getCor())){
 
                     if ((diffLinha == 1 || diffLinha == -1) || (diffColuna == 1 || diffColuna == -1)) {
                         tabuleiro[paraLinha][paraColuna] = tabuleiro[daLinha][daColuna];
                         tabuleiro[daLinha][daColuna] = null;
+                        tabuleiro[paraLinha][paraColuna].eDama(paraLinha);
                     }
 
                     else {
@@ -46,7 +47,7 @@ public class Tabuleiro {
 
         else{
 
-            if(tabuleiro[daLinha][daColuna] != null && tabuleiro[daLinha][daColuna].getCor().equalsIgnoreCase("BRANCO")){
+            if(tabuleiro[daLinha][daColuna] != null && tabuleiro[paraLinha][paraColuna] != null && tabuleiro[daLinha][daColuna].getCor().equalsIgnoreCase("BRANCO")){
                 System.out.println("Movimento inválido!");
             }
 
@@ -57,6 +58,7 @@ public class Tabuleiro {
                     if ((diffLinha == 1 || diffLinha == -1) || (diffColuna == 1 || diffColuna == -1)) {
                         tabuleiro[paraLinha][paraColuna] = tabuleiro[daLinha][daColuna];
                         tabuleiro[daLinha][daColuna] = null;
+                        tabuleiro[paraLinha][paraColuna].eDama(paraLinha);
                     } else {
                         System.out.println("Movimento inválido!");
                     }
