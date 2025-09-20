@@ -1,35 +1,19 @@
 package pieces;
 
+import boardgame.Position;
+
 public class Piece {
 
-    private int linha;
-    private int coluna;
     private String cor;
-    private String simbolo;
+    private char simbolo;
+    private Position position;
 
     public Piece(){}
 
-    public Piece(int linha, int coluna, String cor, String simbolo) {
-        this.linha = linha;
-        this.coluna = coluna;
+    public Piece(String cor, char simbolo, Position position) {
         this.cor = cor;
         this.simbolo = simbolo;
-    }
-
-    public int getLinha() {
-        return linha;
-    }
-
-    public void setLinha(int linha) {
-        this.linha = linha;
-    }
-
-    public int getColuna() {
-        return coluna;
-    }
-
-    public void setColuna(int coluna) {
-        this.coluna = coluna;
+        this.position = position;
     }
 
     public String getCor() {
@@ -40,23 +24,20 @@ public class Piece {
         this.cor = cor;
     }
 
-    public String getSimbolo() {
+    public char getSimbolo() {
         return simbolo;
     }
 
-    public void setSimbolo(String simbolo) {
+    public void setSimbolo(char simbolo) {
         this.simbolo = simbolo;
     }
 
-    public void eDama(int paralinha){
+    public Position getPosition() {
+        return position;
+    }
 
-        if (cor.equalsIgnoreCase("PRETO") && paralinha == 0){
-            simbolo = simbolo+"'";
-        }
-        else if (cor.equalsIgnoreCase("BRANCO") && paralinha == 7){
-            simbolo = simbolo+"'";
-        }
-
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
 }
