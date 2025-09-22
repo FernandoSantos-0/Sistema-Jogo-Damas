@@ -6,12 +6,16 @@ public class Tabuleiro {
 
     private Piece tabuleiro[][] = new Piece[8][8];
 
-    public Piece[][] getPiece() {
-        return tabuleiro;
+    public Piece getPiece(Position position) {
+        return tabuleiro[position.getLinha()][position.getColuna()];
     }
 
     public void setTabuleiro(Piece tabuleiro[][]) {
         this.tabuleiro = tabuleiro;
+    }
+
+    public void inseriPeca(Position position,Piece peca){
+        tabuleiro[position.getLinha()][position.getColuna()] = peca;
     }
 
     public void imprimir(){
@@ -26,7 +30,7 @@ public class Tabuleiro {
                     System.out.print(" - ");
                 }
                 else{
-                    System.out.print(tabuleiro[i][c].getCor());
+                    System.out.print(" "+tabuleiro[i][c].getSimbolo()+" ");
                 }
 
             }
@@ -35,6 +39,12 @@ public class Tabuleiro {
 
         }
         System.out.println("   a  b  c  d  e  f  g  h");
+    }
+
+    public void moverPeca(Position daPosition,Position paraPosition){
+
+
+
     }
 
 }
