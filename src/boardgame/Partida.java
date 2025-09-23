@@ -51,13 +51,11 @@ public class Partida {
             System.out.println("PARA linha, coluna: ");
             Position paraPosicao = new Position(sc.nextInt(),sc.nextInt());
 
-            if (tabuleiro.getPiece(daPosicao).getCor().equalsIgnoreCase("BRANCO") && turno%2 == 0) {}
-            else{}
 
+                turno++;
 
-            turno++;
-
-        }while(rodando);
+            }
+            while(rodando);
 
     }
 

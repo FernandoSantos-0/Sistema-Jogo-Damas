@@ -41,9 +41,35 @@ public class Tabuleiro {
         System.out.println("   a  b  c  d  e  f  g  h");
     }
 
-    public void moverPeca(Position daPosition,Position paraPosition){
+    public void movePeca(Position daPosition,Position paraPosition){
 
+        tabuleiro[paraPosition.getLinha()][paraPosition.getColuna()] = tabuleiro[daPosition.getLinha()][daPosition.getColuna()];
+        tabuleiro[daPosition.getLinha()][daPosition.getColuna()] = null;
 
+    }
+
+    public void controleMoverPeca(Position daPosition,Position paraPosition){
+
+        int diffLinha = paraPosition.getLinha() - daPosition.getLinha();
+        int diffColuna = paraPosition.getColuna() - daPosition.getColuna();
+
+        // ver se o movimento ta na diagonal
+        if (Math.abs(diffLinha) != Math.abs(diffColuna)) {
+            System.out.println("Movimento inválido! Só pode andar em diagonal.");
+            return;
+        }
+
+        // movimento normal 1 casa
+        if (Math.abs(diffLinha) == 1 && Math.abs(diffColuna) == 1) {
+            movePeca(daPosition, paraPosition);
+        }
+        // movimento de captura 2 casas
+        else if (Math.abs(diffLinha) == 2 && Math.abs(diffColuna) == 2) {
+            movePeca(daPosition, paraPosition);
+        }
+        else {
+            System.out.println("Movimento inválido! Só pode andar 1 casa (ou 2 se for captura).");
+        }
 
     }
 
