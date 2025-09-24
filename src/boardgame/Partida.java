@@ -16,7 +16,7 @@ public class Partida {
             for (int c = 0; c < 8; c++) {
                 if ((i + c) % 2 != 0) {
                     Position posicao = new Position(i, c);
-                    tabuleiro.inseriPeca(posicao, new Piece("PRETO", 'P', posicao));
+                    tabuleiro.inseriPeca(posicao, new Piece("BRANCO", 'B', posicao));
                 }
             }
         }
@@ -25,7 +25,7 @@ public class Partida {
             for (int c = 0; c < 8; c++) {
                 if ((i + c) % 2 != 0) {
                     Position posicao = new Position(i, c);
-                    tabuleiro.inseriPeca(posicao, new Piece("BRANCO", 'B', posicao));
+                    tabuleiro.inseriPeca(posicao, new Piece("PRETO", 'P', posicao));
                 }
             }
         }
@@ -36,14 +36,21 @@ public class Partida {
 
         do{
 
-            tabuleiro.imprimir();
-            System.out.println();
-
             if(turno % 2 == 0){
+
+                tabuleiro.imprimir("BRANCO");
+                System.out.println();
+
                 System.out.println("Brancas: ");
+
             }
             else{
+
+                tabuleiro.imprimir("PRETO");
+                System.out.println();
+
                 System.out.println("Pretas: ");
+
             }
 
             System.out.println("DE linha, coluna: ");

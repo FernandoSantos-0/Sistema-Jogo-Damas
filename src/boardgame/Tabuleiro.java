@@ -18,27 +18,37 @@ public class Tabuleiro {
         tabuleiro[position.getLinha()][position.getColuna()] = peca;
     }
 
-    public void imprimir(){
+    public void imprimir(String cor){
+        if (cor.equalsIgnoreCase("BRANCO")) {
 
-        for (int i = 0 ; i < 8;i++ ) {
-
-            System.out.print((8-i)+" ");
-
-            for (int c = 0 ; c < 8;c++ ) {
-
-                if (tabuleiro[i][c] == null){
-                    System.out.print(" - ");
+            for (int i = 7; i >= 0; i--) {
+                System.out.print(i + " ");
+                for (int c = 7; c >= 0; c--) {
+                    if (tabuleiro[i][c] == null) {
+                        System.out.print(" - ");
+                    } else {
+                        System.out.print(" " + tabuleiro[i][c].getSimbolo() + " ");
+                    }
                 }
-                else{
-                    System.out.print(" "+tabuleiro[i][c].getSimbolo()+" ");
-                }
-
+                System.out.println();
             }
-
-            System.out.println();
-
+            System.out.println("   7  6  5  4  3  2  1  0");
         }
-        System.out.println("   a  b  c  d  e  f  g  h");
+        else {
+
+            for (int i = 0; i < 8; i++) {
+                System.out.print(i + " ");
+                for (int c = 0; c < 8; c++) {
+                    if (tabuleiro[i][c] == null) {
+                        System.out.print(" - ");
+                    } else {
+                        System.out.print(" " + tabuleiro[i][c].getSimbolo() + " ");
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println("   0  1  2  3  4  5  6  7");
+        }
     }
 
     public void movePeca(Position daPosition,Position paraPosition){
