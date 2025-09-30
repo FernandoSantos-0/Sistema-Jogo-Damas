@@ -58,8 +58,18 @@ public class Partida {
             System.out.println("PARA linha, coluna: ");
             Position paraPosicao = new Position(sc.nextInt(),sc.nextInt());
 
+            if (tabuleiro.getPiece(daPosicao).getCor().equalsIgnoreCase("BRANCO") && turno % 2 == 0){
+                tabuleiro.controleMoverPeca(daPosicao,paraPosicao);
+            }
+            else if (tabuleiro.getPiece(daPosicao).getCor().equalsIgnoreCase("PRETO") && turno % 2 != 0) {
+                tabuleiro.controleMoverPeca(daPosicao,paraPosicao);
+            }
+            else {
+                System.out.println("Movimento invalido!!! turno errado.");
+            }
 
-                turno++;
+
+            turno++;
 
             }
             while(rodando);

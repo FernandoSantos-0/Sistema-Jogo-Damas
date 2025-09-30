@@ -4,14 +4,10 @@ import pieces.Piece;
 
 public class Tabuleiro {
 
-    private Piece tabuleiro[][] = new Piece[8][8];
+    private Piece[][] tabuleiro = new Piece[8][8];
 
     public Piece getPiece(Position position) {
         return tabuleiro[position.getLinha()][position.getColuna()];
-    }
-
-    public void setTabuleiro(Piece tabuleiro[][]) {
-        this.tabuleiro = tabuleiro;
     }
 
     public void inseriPeca(Position position,Piece peca){
@@ -70,12 +66,36 @@ public class Tabuleiro {
         }
 
         // movimento normal 1 casa
-        if (Math.abs(diffLinha) == 1 && Math.abs(diffColuna) == 1) {
+        if (Math.abs(diffLinha) == 1 && Math.abs(diffColuna) == 1 && tabuleiro[paraPosition.getLinha()][paraPosition.getColuna()] == null) {
             movePeca(daPosition, paraPosition);
         }
-        // movimento de captura 2 casas
+        // se a casa para qual for mover tiver ocupada
+        else if (Math.abs(diffLinha) == 1 && Math.abs(diffColuna) == 1 && tabuleiro[paraPosition.getLinha()][paraPosition.getColuna()] != null){
+            System.out.println("Movimento inválido! Casa está ocupada (Faça o movimento de captura se possivel).");
+        }
+
+        // movimento de captura
+
         else if (Math.abs(diffLinha) == 2 && Math.abs(diffColuna) == 2) {
-            movePeca(daPosition, paraPosition);
+
+            int meioLinha = (paraPosition.getLinha() + daPosition.getLinha()) / 2;
+            int meioColuna = (paraPosition.getColuna() + daPosition.getColuna()) / 2;
+
+            if (tabuleiro[paraPosition.getLinha()][paraPosition.getColuna()] != null) {
+                System.out.println("Movimento inválido! Casa de destino já está ocupada.");
+            }
+            else if (tabuleiro[meioLinha][meioColuna] == null) {
+                System.out.println("Movimento inválido! Não há peça para capturar.");
+            }
+            else if (tabuleiro[meioLinha][meioColuna].getCor().equalsIgnoreCase(tabuleiro[daPosition.getLinha()][daPosition.getColuna()].getCor())) {
+                System.out.println("Movimento inválido! Não pode capturar a própria peça.");
+            }
+            else {
+                // remover peça capturada
+                tabuleiro[meioLinha][meioColuna] = null;
+                // mover peça
+                movePeca(daPosition, paraPosition);
+            }
         }
         else {
             System.out.println("Movimento inválido! Só pode andar 1 casa (ou 2 se for captura).");
