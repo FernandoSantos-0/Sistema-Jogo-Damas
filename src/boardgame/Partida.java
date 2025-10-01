@@ -68,6 +68,12 @@ public class Partida {
                 System.out.println("Movimento invalido!!! turno errado.");
             }
 
+            if (tabuleiro.quantidadePeca("BRANCO") == 0) {
+                rodando = false;
+            }
+            if (tabuleiro.quantidadePeca("PRETO") == 0) {
+                rodando = false;
+            }
 
             turno++;
 

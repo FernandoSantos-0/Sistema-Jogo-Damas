@@ -10,7 +10,15 @@ public class Tabuleiro {
         return tabuleiro[position.getLinha()][position.getColuna()];
     }
 
-    public void inseriPeca(Position position,Piece peca){
+    public Piece[][] getTabuleiro() {
+        return tabuleiro;
+    }
+
+    public boolean existePeca(int i, int c) {
+        return tabuleiro[i][c] != null;
+    }
+
+    public void inseriPeca(Position position, Piece peca){
         tabuleiro[position.getLinha()][position.getColuna()] = peca;
     }
 
@@ -66,10 +74,12 @@ public class Tabuleiro {
         }
 
         // movimento normal 1 casa
+
         if (Math.abs(diffLinha) == 1 && Math.abs(diffColuna) == 1 && tabuleiro[paraPosition.getLinha()][paraPosition.getColuna()] == null) {
             movePeca(daPosition, paraPosition);
         }
         // se a casa para qual for mover tiver ocupada
+
         else if (Math.abs(diffLinha) == 1 && Math.abs(diffColuna) == 1 && tabuleiro[paraPosition.getLinha()][paraPosition.getColuna()] != null){
             System.out.println("Movimento inválido! Casa está ocupada (Faça o movimento de captura se possivel).");
         }
@@ -101,6 +111,25 @@ public class Tabuleiro {
             System.out.println("Movimento inválido! Só pode andar 1 casa (ou 2 se for captura).");
         }
 
+    }
+
+    public int quantidadePeca(String cor){
+
+        int contador = 0;
+
+        for (int i = 0; i < 8; i++) {
+            for (int c = 0; c < 8; c++){
+
+                if (existePeca(i,c)) {
+                    if (tabuleiro[i][c].getCor().equalsIgnoreCase(cor)){
+                        contador++;
+                    }
+                }
+
+
+            }
+        }
+        return contador;
     }
 
 }
